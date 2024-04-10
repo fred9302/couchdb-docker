@@ -84,6 +84,9 @@ RUN set -eux; \
     find /opt/couchdb/etc -type f ! -perm 0644 -exec chmod -f 0644 '{}' +; \
 # only local.d needs to be writable for the docker_entrypoint.sh
     chmod -f 0777 /opt/couchdb/etc/local.d; \
+# install useful packets
+    apt-get install nano -y
+    apt-get install htop -y
 # apt clean-up
     rm -rf /var/lib/apt/lists/*;
 
